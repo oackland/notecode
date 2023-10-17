@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Flask Weather & IP Information API
+{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+{% endblock %}
+
+{% block content %}
+    <submain>
+        <h1>Flask Weather & IP Information API</h1>
+
+        <hr>
+        <br>
+        <p>This API provides endpoints to retrieve weather information based on a city and IP-related details of the
+            server.</p>
+
+        <h2>1. Get Weather for a City</h2>
+        <p><strong>Endpoint:</strong> <code>/getWeather/&lt;city&gt;</code></p>
+        <p><strong>Method:</strong> <code>GET</code></p>
+        <p><strong>URL Parameters:</strong></p>
+        <ul>
+            <li><code>city</code> (required): Name of the city for which you want to fetch the weather.</li>
+        </ul>
+        <p><strong>Response:</strong> A JSON response containing weather details for the given city.</p>
+        <p><strong>Example Request:</strong></p>
+        <pre>
+GET /getWeather/London
+</pre>
+        <p><strong>Example Response:</strong></p>
+        <pre>
+{
+   "coord": {...},
+   "weather": [...],
+   ...
+}
+</pre>
+
+        <h2>2. Get IP Information</h2>
+        <p><strong>Endpoint:</strong> <code>/api/ipinfo</code></p>
+        <p><strong>Method:</strong> <code>GET</code></p>
+        <p><strong>Response:</strong> A JSON response containing details about the IP, hostname, city, region, country,
+            location coordinates, organization, postal code, and timezone of the server.</p>
+        <p><strong>Example Request:</strong></p>
+        <pre>
+GET /api/ipinfo
+</pre>
+        <p><strong>Example Response:</strong></p>
+        <pre>
+{
+   "ip": "123.45.67.89",
+   "hostname": "example.com",
+   "city": "Sample City",
+   ...
+}
+</pre>
+
+        <h2>3. Get Server's Location (City)</h2>
+        <p><strong>Endpoint:</strong> <code>/api/userlocation</code></p>
+        <p><strong>Method:</strong> <code>GET</code></p>
+        <p><strong>Response:</strong> A JSON response containing the city in which the server is located.</p>
+        <p><strong>Example Request:</strong></p>
+        <pre>
+GET /api/userlocation
+</pre>
+        <p><strong>Example Response:</strong></p>
+        <pre>
+{
+   "city": "Sample City"
+}
+</pre>
+        <p>Or, in case the city is not found:</p>
+        <pre>
+{
+   "error": "City not found"
+}
+</pre>
+    </submain>
+
+{%- endblock %}

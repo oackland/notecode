@@ -1,0 +1,36 @@
+.morphic-border-wrapper
+{
+	display             : inline-block;
+	border              : 4px solid;
+	box-shadow          : -5px -5px 10px rgba(255, 255, 255, 0.8), 5px 5px 15px rgba(0, 0, 0, 0.2);
+	border-image-source : linear-gradient(45deg, #ff6ec4, #7873f5, #33f0c8, #fe904d);
+	border-image-slice  : 1;
+	overflow            : hidden;
+	}
+
+.morphic-card
+{
+	font-size        : 14px;
+	line-height      : 1.6;
+	display          : flex;
+	flex-direction   : column;
+	border-radius    : 40px;
+	width            : 300px;
+	background-color : #222222;
+	padding          : 20px 30px;
+	}
+
+.morphic-card h2
+{
+	font-size      : 24px;
+	font-weight    : bold;
+	margin         : 10px 0 15px;
+	letter-spacing : 0.5px;
+	}
+
+.morphic-card p
+{
+	font-size      : 16px;
+	margin         : 10px 0;
+	letter-spacing : 0.25px;
+	}

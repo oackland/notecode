@@ -1,0 +1,22 @@
+.flexbox
+{
+	width : 100%;
+	}
+
+#flex{
+	
+	border: #ff0066 solid 1px;
+	height : 100vh;
+	/*width: 100vw;*/
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	}
+
+
+
+.img-bg
+{
+	height : 500px;
+	width: 600px;
+	}

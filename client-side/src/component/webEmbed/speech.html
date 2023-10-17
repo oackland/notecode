@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Web Speech API Example</title>
+	<style>
+		.container
+		{
+			width           : 95vw;
+			padding         : 20px;
+			height          : 100vh;
+			overflow-x      : hidden;
+			justify-content : center;
+			align-items     : center;
+			text-align      : center;
+			}
+		
+		.nav h2
+		{
+			font-size      : 22px;
+			font-weight    : 500;
+			letter-spacing : 1px;
+			text-align     : center;
+			}
+		
+		#content
+		{
+			position        : unset;
+			display         : block;
+			width           : 80%;
+			overflow-x      : hidden;
+			border          : none;
+			border-radius   : 12px;
+			box-shadow      : 0 0 8px #a5a094;
+			height          : 50%;
+			font-size       : 16px;
+			padding         : 12px;
+			font-family     : cursive;
+			font-weight     : 400;
+			align-items     : flex-start;
+			justify-content : center;
+			margin          : auto;
+			background      : #eee;
+			color           : #000000;
+			}
+		
+		.speech
+		{
+			background-color : rgb(18, 148, 199);
+			overflow         : hidden;
+			}
+		
+		iframe
+		{
+			border-radius : 50%;
+			}
+		
+		@-webkit-keyframes changecolor
+		{
+			from
+			{
+				background : red;
+				color      : white;
+				}
+			
+			0%
+			{
+				background : yellow;
+				color      : red;
+				}
+			
+			25%
+			{
+				background : blue;
+				color      : white;
+				}
+			
+			50%
+			{
+				background : green;
+				color      : white;
+				}
+			
+			75%
+			{
+				background : rgb(231, 50, 207);
+				color      : white;
+				}
+			
+			100%
+			{
+				background : orange;
+				color      : rgb(255, 255, 255);
+				}
+			}
+		
+		@keyframes changecolor
+		{
+			from
+			{
+				background : rgb(241, 47, 47);
+				color      : white;
+				}
+			
+			0%
+			{
+				background : rgb(233, 233, 34);
+				color      : rgb(37, 37, 37);
+				}
+			
+			25%
+			{
+				background : rgb(65, 65, 248);
+				color      : white;
+				}
+			
+			50%
+			{
+				background : rgb(47, 233, 47);
+				color      : white;
+				}
+			
+			75%
+			{
+				background : rgb(0, 255, 221);
+				color      : white;
+				}
+			
+			100%
+			{
+				background : orange;
+				color      : rgb(255, 255, 255);
+				}
+			}
+	</style>
+</head>
+
+<body class="speech">
+<div class="container">
+	<h2
+			style="
+          margin-bottom: 20px;
+          font-size: 2rem;
+          font-family: Poppins, cursive;
+        "
+	>
+		Please Speak Something to write
+	</h2>
+	<button
+			style="
+          margin-bottom: 20px;
+          line-height: 2rem;
+          border-bottom-left-radius: 0 30px;
+        "
+			id="button"
+			onclick="toggleStartStop()"
+	>
+		Click to Speak
+	</button>
+	<div
+			style="
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 60%;
+          border: solid;
+          border-radius: 125px 30px 125px 30px;
+          padding: 10px;
+          height: 60vh;
+          line-height: 1rem;
+          background-color: white;
+        "
+	>
+		<span id="final_span"></span>
+		<span id="interim_span" style="color: black"></span>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var recognizing;
+	var recognition;
+	
+	if (
+			"SpeechRecognition" in window ||
+			"webkitSpeechRecognition" in window
+	) {
+		recognition = new (window.SpeechRecognition ||
+				window.webkitSpeechRecognition)();
+		recognition.continuous = true;
+		recognition.interimResults = true;
+		
+		recognition.onend = reset;
+		recognition.onresult = function (event) {
+			var final = "";
+			var interim = "";
+			for (var i = 0; i < event.results.length; ++i) {
+				if (event.results[i].isFinal) {
+					final += event.results[i][0].transcript;
+				} else {
+					interim += event.results[i][0].transcript;
+				}
+			}
+			document.getElementById("final_span").innerHTML = final;
+			document.getElementById("interim_span").innerHTML = interim;
+		};
+		
+		function reset() {
+			recognizing = false;
+			document.getElementById("button").innerHTML = "Click to Speak";
+		}
+		
+		function toggleStartStop() {
+			if (recognizing) {
+				recognition.stop();
+				reset();
+			} else {
+				recognition.start();
+				recognizing = true;
+				document.getElementById("button").innerHTML = "Click to Stop";
+			}
+		}
+	} else {
+		alert(
+				"Your browser does not support the Web Speech API. Try using Chrome or Firefox.",
+		);
+	}
+</script>
+</body>
+</html>

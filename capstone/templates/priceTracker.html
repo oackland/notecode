@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Price Tracker API Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            word-spacing: 1px;
+            letter-spacing: 1px;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.2;
+        }
+
+        code, pre {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            display: block;
+            padding: 10px;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #cccccc;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Price Tracker API Documentation</h1>
+
+    <section>
+        <h2>Overview</h2>
+        <p>The Price Tracker API is designed to retrieve the product title and current price from an Amazon product
+            page.</p>
+        <p><strong>Base URL:</strong> <code>http://localhost:5000</code></p>
+    </section>
+
+    <section>
+        <h2>Endpoints</h2>
+
+        <article>
+            <h3>1. Track Price</h3>
+            <h4>POST /track-price</h4>
+            <p>This endpoint receives a URL of a product and returns the title and the current price of the product.</p>
+
+            <h5>Request</h5>
+            <table>
+                <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Type</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                    <th>Required</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>url</td>
+                    <td>string</td>
+                    <td>body</td>
+                    <td>The URL of the product to track.</td>
+                    <td>Yes</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h5>Request Body Example</h5>
+            <pre><code>{
+    "url": "https://www.amazon.com/dp/product-code"
+}</code></pre>
+
+            <h5>Response</h5>
+            <p>The response includes the title of the product and its price.</p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>title</td>
+                    <td>string</td>
+                    <td>The title of the product.</td>
+                </tr>
+                <tr>
+                    <td>price</td>
+                    <td>float</td>
+                    <td>The current price of the product.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h5>Response Example</h5>
+            <pre><code>{
+    "title": "Product Name",
+    "price": 299.99
+}</code></pre>
+
+            <h5>Error Handling</h5>
+            <table>
+                <thead>
+                <tr>
+                    <th>HTTP Status Code</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>400</td>
+                    <td>Bad request (e.g., no URL provided).</td>
+                </tr>
+                <tr>
+                    <td>404</td>
+                    <td>Product details not found on the page.</td>
+                </tr>
+                <tr>
+                    <td>500</td>
+                    <td>Server error.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h5>Error Response Example</h5>
+            <pre><code>{
+    "error": "Detailed error message."
+}</code></pre>
+        </article>
+    </section>
+
+    <section>
+        <h2>Security Considerations</h2>
+        <ul>
+            <li>Ensure to validate and sanitize the received URLs.</li>
+            <li>The server should handle errors gracefully and return the appropriate error codes and messages.</li>
+            <li>This server runs without authentication. Implementing auth mechanisms like API keys, OAuth, or JWT is
+                recommended for production.
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Rate Limiting and Quotas</h2>
+        <p>Currently, there is no rate limiting for requesting the `/track-price` endpoint. It's recommended to
+            implement rate limiting to prevent abuse.</p>
+    </section>
+
+</div>
+</body>
+</html>

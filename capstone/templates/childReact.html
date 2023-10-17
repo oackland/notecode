@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Child Components
+{% endblock %}
+
+{% block content %}
+    <h1>Child Components</h1>
+    <p>In React, the concept of parent and child components is foundational. The parent component contains one or more
+        child
+        components, allowing you to break down complex UIs into more manageable, reusable pieces.</p>
+    <p>From your given code, it looks like you have a parent component named <code>Home</code> that is designed to
+        receive a
+        child component through its props and then render that child. Here's a step-by-step guide on how to use parent
+        and
+        child components based on your example:</p>
+    <h2>1. Creating a Child Component:</h2>
+    <p>Let's create a simple child component named <code>Greeting</code>.</p>
+    <pre>
+    import React from 'react';
+
+    const Greeting: React.FC = () => {
+        return &lt;h1&gt;Hello, World!&lt;/h1&gt;;
+    }
+
+    export default Greeting;
+</pre>
+    <h2>2. Using the Child Component in the Parent:</h2>
+    <p>You can include the <code>Greeting</code> component as a child inside the <code>Home</code> component.</p>
+    <pre>
+    import React from 'react';
+    import Greeting from './Greeting'; // Assuming Greeting is in the same directory
+
+    const Home: React.FC = () => {
+        return (
+           &lt;Home child=&lt;Greeting /&gt; /&gt;
+        );
+    }
+
+    export default Home;
+</pre>
+    <h2>3. Passing Child Components using Props:</h2>
+    <p>Instead of directly placing the child component inside the parent in the manner shown above, you can pass it as a
+        prop (like how your <code>Home</code> component expects it).</p>
+    <pre>
+    import React from 'react';
+    import Home from './Home';
+    import Greeting from './Greeting';
+
+    const App: React.FC = () => {
+        return &lt;Home child=&lt;Greeting /&gt; /&gt;;
+    }
+
+    export default App;
+</pre>
+    <h2>4. Using <code>children</code> Prop:</h2>
+    <p>React has a special prop called <code>children</code> which can be used to pass child components in between
+        opening
+        and closing tags of the parent component.</p>
+    <p>Update <code>Home</code> component to make use of <code>children</code>:</p>
+    <pre>
+    import React from 'react';
+
+    const Home: React.FC = ({ children }) => {
+        return &lt;&gt;{children}&lt;/&gt;;
+    }
+
+    export default Home;
+</pre>
+    <p>Using the <code>children</code> prop in the <code>App</code> component:</p>
+    <pre>
+    import React from 'react';
+    import Home from './Home';
+    import Greeting from './Greeting';
+
+    const App: React.FC = () => {
+        return (
+            &lt;Home&gt;
+                &lt;Greeting /&gt;
+            &lt;/Home&gt;
+        );
+    }
+
+    export default App;
+</pre>
+    <p>In this approach, anything you place between the opening and closing tags of <code>&lt;Home&gt;</code> will be
+        passed
+        as the <code>children</code> prop. This makes it more flexible and intuitive for developers to use.</p>
+    <p>Remember, the key to effectively using parent and child components in React is understanding props and how data
+        can
+        be passed down from parent to child. It helps in building modular and reusable components, leading to cleaner
+        and
+        more maintainable code.</p>
+{% endblock %}

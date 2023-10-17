@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication API Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .endpoint {
+            margin-bottom: 40px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 5px;
+            border-radius: 5px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Authentication API Documentation</h1>
+
+    <div class="endpoint">
+        <h2>/register</h2>
+        <p><strong>Method:</strong> POST</p>
+        <p><strong>Description:</strong> Register a new user.</p>
+        <p><strong>Request Body:</strong></p>
+        <code>
+            {
+                "username": "sampleUsername",
+                "email": "sampleEmail@example.com",
+                "password": "samplePassword"
+            }
+        </code>
+        <p><strong>Response:</strong> User created successfully with a 201 status code.</p>
+    </div>
+
+    <div class="endpoint">
+        <h2>/login</h2>
+        <p><strong>Method:</strong> POST</p>
+        <p><strong>Description:</strong> Log in with a username and password.</p>
+        <p><strong>Request Body:</strong></p>
+        <code>
+            {
+                "username": "sampleUsername",
+                "password": "samplePassword"
+            }
+        </code>
+        <p><strong>Response:</strong> Returns an access token if the username and password are valid.</p>
+        <code>
+            {
+                "access_token": "generatedTokenHere"
+            }
+        </code>
+    </div>
+
+    <h3>Usage commands:</h3>
+    <p>Using <strong>curl</strong> to interact with your API:</p>
+
+    <h4>Register:</h4>
+    <code>
+        curl -X POST http://localhost:5000/register \
+        -H "Content-Type: application/json" \
+        -d '{"username":"sampleUsername", "email":"sampleEmail@example.com", "password":"samplePassword"}'
+    </code>
+
+    <h4>Login:</h4>
+    <code>
+        curl -X POST http://localhost:5000/login \
+        -H "Content-Type: application/json" \
+        -d '{"username":"sampleUsername", "password":"samplePassword"}'
+    </code>
+
+</body>
+
+</html>

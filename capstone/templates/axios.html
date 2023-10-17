@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask API & React Integration Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        h2 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        p, li, pre {
+            color: #555;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        pre {
+            background-color: #f7f7f7;
+            padding: 10px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Integrating Flask API with React</h1>
+
+<p>This guide provides a detailed explanation of how to use the Flask API in relation to a React application, leveraging axios for HTTP requests.</p>
+
+<h2>Setup</h2>
+<p>Ensure you have <a href="https://www.npmjs.com/package/axios">axios</a> installed in your React project:</p>
+<pre>
+npm install axios
+</pre>
+
+<h2>1. Get Weather for a City</h2>
+<h3>Endpoint</h3>
+<pre>
+GET /getWeather/&lt;city&gt;
+</pre>
+
+<h3>Using in React:</h3>
+<pre>
+import React, { useState } from 'react';
+import axios from 'axios';
+
+function WeatherComponent() {
+    const [city, setCity] = useState('London'); // default city
+    const [weatherData, setWeatherData] = useState(null);
+
+    const fetchWeather = async () => {
+        try {
+            const response = await axios.get(`/getWeather/${city}`);
+            setWeatherData(response.data);
+        } catch (error) {
+            console.error("Error fetching weather:", error);
+        }
+    };
+
+    return (
+        &lt;div&gt;
+            &lt;button onClick={fetchWeather}&gt;Get Weather&lt;/button&gt;
+            {/* Render weatherData as needed */}
+        &lt;/div&gt;
+    );
+}
+</pre>
+
+<h2>2. Get IP Information</h2>
+<h3>Endpoint</h3>
+<pre>
+GET /api/ipinfo
+</pre>
+
+<h3>Using in React:</h3>
+<pre>
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function IPInfoComponent() {
+    const [ipInfo, setIpInfo] = useState(null);
+
+    useEffect(() => {
+        const fetchIPInfo = async () => {
+            try {
+                const response = await axios.get('/api/ipinfo');
+                setIpInfo(response.data);
+            } catch (error) {
+                console.error("Error fetching IP info:", error);
+            }
+        };
+
+        fetchIPInfo();
+    }, []);
+
+    return (
+        &lt;div&gt;
+            {/* Render ipInfo as needed */}
+        &lt;/div&gt;
+    );
+}
+</pre>
+
+<h2>3. Get Server's Location (City)</h2>
+<h3>Endpoint</h3>
+<pre>
+GET /api/userlocation
+</pre>
+
+<h3>Using in React:</h3>
+<pre>
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function UserLocationComponent() {
+    const [city, setCity] = useState(null);
+
+    useEffect(() => {
+        const fetchUserLocation = async () => {
+            try {
+                const response = await axios.get('/api/userlocation');
+                setCity(response.data.city);
+            } catch (error) {
+                console.error("Error fetching user location:", error);
+            }
+        };
+
+        fetchUserLocation();
+    }, []);
+
+    return (
+        &lt;div&gt;
+            {/* Render city as needed */}
+        &lt;/div&gt;
+    );
+}
+</pre>
+
+</body>
+
+</html>

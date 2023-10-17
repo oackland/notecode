@@ -1,0 +1,101 @@
+.modalHeader, h2
+{
+	display: flex;
+	flex-direction: row;
+	color : #ff0066;
+	justify-content: space-between;
+	}
+
+.closeButton{
+	border-radius: 50%;
+	height: 30px;
+	width: 30px;
+	background-color: #ff0066;
+	border-color: #555555;
+	color : white;
+	font-weight: 700;
+	}
+
+.body{
+	display : flex;
+	flex-direction: column;
+	justify-content : center;
+	align-items: center;
+	}
+.modal-form{
+	margin-bottom: 20px;
+	}
+button{
+	width : 100%;
+	margin: 20px 0 20px 0;
+	background-color: #ff0066;
+	border-color: #ff0066;
+	color: white;
+	font-size: 18px;
+	border-radius: 10px ;
+	}
+.modal-overlay
+{
+	position        : fixed;
+	top             : 0;
+	left            : 0;
+	width           : 100%;
+	height          : 100%;
+	background      : rgba(0, 0, 0, 0.5);
+	display         : flex;
+	justify-content : center;
+	align-items     : center;
+	animation       : fadeIn 0.3s;
+	}
+
+
+
+input,textarea {
+	background-color: #1e2127;
+	color : white;
+	}
+
+.modal-content
+{
+	background    : #222;
+	color: white;
+	padding       : 20px;
+	border-radius : 8px;
+	max-width     : 500px;
+	width         : 90%;
+	animation     : zoomIn 0.3s;
+	}
+
+@keyframes fadeIn
+{
+	from
+	{
+		opacity : 0;
+		}
+	to
+	{
+		opacity : 1;
+		}
+	}
+
+@keyframes zoomIn
+{
+	from
+	{
+		transform : scale(0.5);
+		}
+	to
+	{
+		transform : scale(1);
+		}
+	}
+
+.formInput{
+	height: 30px;
+	width : 100%;
+	
+	}
+
+.formTextArea{
+	height: 60px
+	}

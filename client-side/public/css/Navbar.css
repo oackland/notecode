@@ -1,0 +1,52 @@
+.nav-bar
+{
+	display          : flex;
+	justify-content  : space-around;
+	padding          : 10px;
+	background-color : #333;
+	}
+
+.nav-bar button
+{
+	background-color : #555;
+	color            : white;
+	border           : none;
+	padding          : 10px 15px;
+	cursor           : pointer;
+	border-radius    : 5px;
+	outline          : none;
+	transition       : background-color 0.3s ease;
+	}
+
+.nav-bar button:hover
+{
+	background-color : #777;
+	}
+
+.dropdown-menu
+{
+	list-style-type  : none;
+	padding          : 0;
+	margin-top       : 10px;
+	background-color : #555;
+	border-radius    : 5px;
+	box-shadow       : 0 0 10px rgba(0, 0, 0, 0.3);
+	}
+
+.dropdown-menu li
+{
+	padding : 10px 20px;
+	cursor  : pointer;
+	}
+
+.dropdown-menu li:hover
+{
+	background-color : #777;
+	}
+.commandInput
+{
+	height: 100%;
+	margin-right: 20px;
+	box-shadow : 0 0 10px rgba(0, 0, 0, 0.3);
+	border-radius: 5px;
+	}

@@ -1,0 +1,98 @@
+* {
+    background-color: #333333;
+    font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+}
+
+html, body {
+    width: 100%;
+
+
+}
+
+HEADER {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    right: 50%;
+    display: flex;
+    max-width: 600px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: translate(-50%);
+
+
+}
+
+h1 {
+    height: fit-content;
+}
+
+p {
+    line-height: 20px;
+}
+
+ol {
+    color: cadetblue;
+}
+
+.black {
+    display: inline-flex;
+    flex-direction: column;
+    height: 100px;
+    background-color: #dddddd;
+}
+
+pre {
+    font-size: 18px;
+    font-family: 'Inconsolata', monospace;
+    font-weight: 700;
+    color: #f7f7f7;
+    border-radius: 5px;
+    background-color: #555555;
+    padding: 15px; /* 5px vertical padding, and 15px horizontal padding for left and right */
+    justify-content: center;
+    align-items: center;
+}
+
+NAV.navbar {
+    max-width: 600px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%; /* This makes sure the navbar occupies the full viewport height */
+}
+
+A {
+    display: block;
+    text-align: center;
+    margin: 0 15px; /* Adds some spacing between each link */
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    color: cadetblue;
+    padding: 10px 20px; /* Optional: Adds some padding around each link */
+}
+
+
+MAIN {
+    width: 100%;
+    padding: 20px;
+    display: inline-flex;
+    flex-direction: column;
+    margin-top: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+submain {
+    max-width: 600px;
+    display: block;
+    justify-content: center;
+    line-break: anywhere;
+    line-height: 20px;
+}
+

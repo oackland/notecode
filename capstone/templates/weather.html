@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather API Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        h2 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        p, li, pre {
+            color: #555;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        pre {
+            background-color: #f7f7f7;
+            padding: 10px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Weather API Documentation</h1>
+
+<p>This documentation provides an overview of the <code>/api/weather</code> endpoint, which retrieves weather data for the server's location.</p>
+
+<h2>Get Weather for Server's Location</h2>
+<p><strong>Endpoint:</strong> <code>/api/weather</code></p>
+<p><strong>Method:</strong> <code>GET</code></p>
+
+<p><strong>Response:</strong></p>
+<p>A JSON response containing various weather-related details for the server's location.</p>
+
+<p><strong>Response Fields:</strong></p>
+<ul>
+    <li><code>weather</code>: General weather description (e.g., "clear sky").</li>
+    <li><code>pressure_in_bar</code>: Atmospheric pressure in hPa.</li>
+    <li><code>temperature_celsius</code>: Current temperature in Celsius.</li>
+    <li><code>temperature_fahrenheit</code>: Current temperature in Fahrenheit.</li>
+    <li><code>icon</code>: Weather icon code (you can use it to fetch icons from OpenWeather's platform).</li>
+    <li><code>wind</code>: Wind speed in m/s.</li>
+    <li><code>sunset</code>: Time of sunset (UNIX timestamp).</li>
+    <li><code>sunrise</code>: Time of sunrise (UNIX timestamp).</li>
+    <li><code>temp_high_for_day</code>: Highest temperature recorded for the day in Celsius.</li>
+    <li><code>temp_low_for_day</code>: Lowest temperature recorded for the day in Celsius.</li>
+</ul>
+
+<p><strong>Example Request:</strong></p>
+<pre>
+GET /api/weather
+</pre>
+
+<p><strong>Example Response:</strong></p>
+<pre>
+{
+    "weather": "clear sky",
+    "pressure_in_bar": 1012,
+    "temperature_celsius": 24,
+    "temperature_fahrenheit": 75.2,
+    "icon": "01d",
+    "wind": 3.1,
+    "sunset": 1624992789,
+    "sunrise": 1624946819,
+    "temp_high_for_day": 25,
+    "temp_low_for_day": 15
+}
+</pre>
+
+<p>Note: Ensure your server is running and correctly configured to handle the requests. The response might vary based on the server's location and current weather conditions.</p>
+
+</body>
+
+</html>
